@@ -23,3 +23,10 @@ func _process(_delta: float) -> void:
 
 func _ready():
 	pass
+
+func shoot():
+	var instance = projectile.instantiate()
+	instance.dir = rotation
+	instance.spawnPos = global_position
+	instance.spawnRot = rotation
+#working on getting players to shoot projectiles
