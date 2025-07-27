@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0tkulak64f6y"]
+
+[ext_resource type="Texture2D" uid="uid://bmo4711lj8e25" path="res://pixilart-drawing (2).png" id="1_7q80u"]
+[ext_resource type="Texture2D" uid="uid://c6o1havk4u5fh" path="res://player_scenes/pixilart-drawing (3).png" id="2_egjmb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cperu"]
+texture = ExtResource("1_7q80u")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiawh"]
+texture = ExtResource("2_egjmb")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_07nuv"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_cperu")
+sources/1 = SubResource("TileSetAtlasSource_hiawh")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_07nuv")
+format = 2

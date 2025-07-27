@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var main = get_tree().get_root().get_node("main")
+@onready var projectile = load("res://projectile.tscn")
+
 
 const SPEED = 200.0
 #The movement speed of the character, could be changed later.
@@ -16,3 +19,7 @@ func _process(_delta: float) -> void:
 	velocity = direction * SPEED
 	
 	move_and_slide()
+
+
+func _ready():
+	pass
