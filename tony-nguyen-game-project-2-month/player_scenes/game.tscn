@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://y4dfnv4sqvqe"]
 
-[ext_resource type="Texture2D" uid="uid://bmo4711lj8e25" path="res://pixilart-drawing (2).png" id="1_wecq1"]
+[ext_resource type="Texture2D" uid="uid://bmo4711lj8e25" path="res://art/pixilart-drawing (2).png" id="1_wecq1"]
 [ext_resource type="PackedScene" uid="uid://bxluaup7558td" path="res://player_scenes/player_character.tscn" id="2_l5kdw"]
-[ext_resource type="Texture2D" uid="uid://c6o1havk4u5fh" path="res://player_scenes/pixilart-drawing (3).png" id="3_x3vw1"]
+[ext_resource type="Texture2D" uid="uid://c6o1havk4u5fh" path="res://art/pixilart-drawing (3).png" id="3_x3vw1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shfa5"]
 texture = ExtResource("1_wecq1")

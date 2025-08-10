@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jv22xcmwapt6"
-path="res://.godot/imported/pixilart-drawing (1).png-a06dd7ecb7dd12cfff881924d4a1bf7f.ctex"
+path="res://.godot/imported/pixilart-drawing (1).png-7e98f0797f4c89b2a9b3feb138ff5315.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixilart-drawing (1).png"
-dest_files=["res://.godot/imported/pixilart-drawing (1).png-a06dd7ecb7dd12cfff881924d4a1bf7f.ctex"]
+source_file="res://art/pixilart-drawing (1).png"
+dest_files=["res://.godot/imported/pixilart-drawing (1).png-7e98f0797f4c89b2a9b3feb138ff5315.ctex"]
 
 [params]
 

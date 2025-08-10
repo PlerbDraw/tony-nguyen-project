@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
-@onready var main = get_tree().get_root().get_node("main")
-@onready var projectile = load("res://projectile.tscn")
-
+@export var projectile_scene: PackedScene
 
 const SPEED = 200.0
+var can_shoot: bool = true 
 #The movement speed of the character, could be changed later.
 #const means that it won't change while the game is running. 
 #it could be used liater for things like upgrades or speedbossts
@@ -19,14 +18,17 @@ func _process(_delta: float) -> void:
 	velocity = direction * SPEED
 	
 	move_and_slide()
+	
+	if Input.is_action_pressed("ui_shoot") and can_shoot:
+		var projectile = projectile_scene.instantiate()
+		projectile.rotation = $Sprite2D/Node2D.rotation
+		projectile.global_position = self.global_position
+		projectile.player = self
+		add_sibling(projectile)
+		
+		#this first allows the player to shoot first
+		
 
-
-func _ready():
-	pass
-
-func shoot():
-	var instance = projectile.instantiate()
-	instance.dir = rotation
-	instance.spawnPos = global_position
-	instance.spawnRot = rotation
-#working on getting players to shoot projectiles
+func _physics_process(delta):
+	look_at(get_global_mouse_position())
+	#makes the character look at mouse

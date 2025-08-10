@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcgbmoos15byx"]
+
+[ext_resource type="Texture2D" uid="uid://sa237xmymmu6" path="res://art/pixil-frame-0 (4).png" id="1_4l84i"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_qh2cw"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qh2cw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4l84i")
