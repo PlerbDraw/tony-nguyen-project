@@ -22,4 +22,4 @@ scale = Vector2(0.979487, 0.954687)
 shape = SubResource("RectangleShape2D_vswx4")
 
 [node name="staff" parent="." instance=ExtResource("2_oj2dx")]
-position = Vector2(45, 0)
+position = Vector2(26, 0)

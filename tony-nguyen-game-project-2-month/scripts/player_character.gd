@@ -29,6 +29,5 @@ func _process(_delta: float) -> void:
 		#this first allows the player to shoot first
 		
 
-func _physics_process(delta):
-	look_at(get_global_mouse_position())
+
 	#makes the character look at mouse

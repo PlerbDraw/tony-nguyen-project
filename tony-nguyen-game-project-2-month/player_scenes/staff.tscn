@@ -4,19 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://b1cs7dwv6hdjg" path="res://art/pixilart-drawing (4).png" id="2_220f0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n3vkl"]
-radius = 3.0
-height = 22.0
+radius = 14.0
+height = 64.0
 
 [node name="staff" type="Area2D"]
-position = Vector2(76, 77)
+position = Vector2(0, 1)
 script = ExtResource("1_patvd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-scale = Vector2(1.4375, 1.4375)
+position = Vector2(1.90735e-06, -1.90735e-06)
+scale = Vector2(4.96875, 4.96875)
 texture = ExtResource("2_220f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_n3vkl")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -15)
 
 [connection signal="body_entered" from="." to="." method="_on_enemy_hit"]
