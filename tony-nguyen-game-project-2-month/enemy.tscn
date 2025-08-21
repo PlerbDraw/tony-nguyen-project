@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://brq3jy1aktli2"]
+[gd_scene load_steps=5 format=3 uid="uid://brq3jy1aktli2"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_k887p"]
 [ext_resource type="Texture2D" uid="uid://clwfhg08btsdy" path="res://art/pixilart-drawing (5).png" id="2_u31pi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4cfg"]
-radius = 7.0
+radius = 65.9038
 
-[node name="Node2D" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xiolx"]
+radius = 16.0078
+
+[node name="enemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_k887p")
 
@@ -15,7 +18,11 @@ position = Vector2(-4.76837e-07, 4.76837e-07)
 scale = Vector2(0.835938, 0.835938)
 texture = ExtResource("2_u31pi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_e4cfg")
 
@@ -23,4 +30,9 @@ shape = SubResource("CircleShape2D_e4cfg")
 position = Vector2(0.5, 0.500001)
 scale = Vector2(1.4, 1.5125)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xiolx")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
