@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqji04vdj37kj"]
+
+[ext_resource type="Texture2D" uid="uid://d3o28d5apweik" path="res://art/pixilart-drawing (6).png" id="1_i7lbp"]
+
+[node name="SpawnLocation" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 1.13687e-13)
+scale = Vector2(2.59375, 2.59375)
+texture = ExtResource("1_i7lbp")
