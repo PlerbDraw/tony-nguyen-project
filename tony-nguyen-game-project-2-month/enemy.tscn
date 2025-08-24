@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://clwfhg08btsdy" path="res://art/pixilart-drawing (5).png" id="2_u31pi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4cfg"]
-radius = 65.9038
+radius = 167.035
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xiolx"]
 radius = 16.0078

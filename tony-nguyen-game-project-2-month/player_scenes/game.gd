@@ -4,6 +4,21 @@ var enemy = preload("res://enemy.tscn")
 
 
 
+
+
+var current_wave: int = 1
+var enemies_remaining: int 
+var enemies_spawned: int = 0 
+
+var
+var
+var 
+var enemy_spawn_time
+var enemy_health
+var enemy_speed
+
+
+
 func _on_SpawnTimer_timeout():
 	var enemy_instances = enemy.instantiate() 
 	add_child(enemy_instances)
