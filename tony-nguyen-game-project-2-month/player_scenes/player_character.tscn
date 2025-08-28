@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxluaup7558td"]
+[gd_scene load_steps=6 format=3 uid="uid://bxluaup7558td"]
 
 [ext_resource type="Script" path="res://scripts/player_character.gd" id="1_576xq"]
 [ext_resource type="Texture2D" uid="uid://jv22xcmwapt6" path="res://art/pixilart-drawing (1).png" id="2_5jxav"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vswx4"]
 size = Vector2(47.9843, 62.8478)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3ecb"]
+radius = 40.1123
 
 [node name="MeleePlayer" type="CharacterBody2D"]
 collision_layer = 2
@@ -25,3 +28,12 @@ shape = SubResource("RectangleShape2D_vswx4")
 
 [node name="staff" parent="." instance=ExtResource("2_oj2dx")]
 position = Vector2(26, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-3, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_s3ecb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_receive_damage"]

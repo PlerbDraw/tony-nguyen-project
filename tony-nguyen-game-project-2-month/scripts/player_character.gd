@@ -1,9 +1,15 @@
 extends CharacterBody2D
 
 @export var projectile_scene: PackedScene
-
-const SPEED = 200.0
+const SPEED: float = 300.0
+@export var bullet_scene: PackedScene
+@export var bullet_spawn: Node
+@export var ui: Node 
+@export var spark_scene: PackedScene
+@export var health_ui: Node # Replace with function body.
 var can_shoot: bool = true 
+var health: int = 10
+
 #The movement speed of the character, could be changed later.
 #const means that it won't change while the game is running. 
 #it could be used liater for things like upgrades or speedbossts
@@ -30,4 +36,22 @@ func _process(_delta: float) -> void:
 		
 
 
+
+func _bullet_cooldown() -> void:
+	can_shoot = true
+
+
+
+
 	#makes the character look at mouse
+
+
+
+
+func _receive_damage(body: Node2D) -> void:
+	if body is enemy:
+		health -= 1
+		print(health)
+		health_ui.value = health
+		if health <= 0:
+			get_tree().reload_current_scene()
