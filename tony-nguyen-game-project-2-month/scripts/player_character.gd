@@ -49,9 +49,10 @@ func _bullet_cooldown() -> void:
 
 
 func _receive_damage(body: Node2D) -> void:
-	if body is enemy:
+	if body is Enemy:
 		health -= 1
 		print(health)
 		health_ui.value = health
 		if health <= 0:
 			get_tree().reload_current_scene()
+#this code helps godot to apply if enemy touches player, player takes damage.

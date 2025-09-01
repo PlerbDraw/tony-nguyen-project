@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://clwfhg08btsdy" path="res://art/pixilart-drawing (5).png" id="2_u31pi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4cfg"]
-radius = 167.035
+radius = 46.9181
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xiolx"]
-radius = 16.0078
+radius = 9.01388
 
 [node name="enemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -31,6 +31,7 @@ position = Vector2(0.5, 0.500001)
 scale = Vector2(1.4, 1.5125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.32794, 1.32794)
 shape = SubResource("CircleShape2D_xiolx")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

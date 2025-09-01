@@ -1,7 +1,8 @@
+class_name Enemy
 extends CharacterBody2D
 
 var player: Node
-var speed: float = 200.0 
+var speed: float =  20
 var dead: bool = false
 var health: int = 3
 @export var health_ui = Node
