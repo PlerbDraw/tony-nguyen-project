@@ -1,8 +1,10 @@
 class_name Enemy
 extends CharacterBody2D
 
-var player: Node
-var speed: float =  20
+signal enemy_died
+
+var player: Node2D
+var speed: float =  50
 var dead: bool = false
 var health: int = 3
 @export var health_ui = Node
@@ -24,18 +26,18 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta): 
 	if player_chase: 
-		position += (player.position - position)/speed
-		
-		
+		var dir = (player.position - position).normalized()
+		velocity = dir * speed
+		move_and_slide()
 
 
 
 
 
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("dead")
-	queue_free()
+#func _on_visible_on_screen_notifier_2d_screen_exited():
+	#print("dead")
+	#queue_free()
 
 
 func _on_detection_area_body_entered(body):
@@ -44,16 +46,26 @@ func _on_detection_area_body_entered(body):
 
 func hit(): 
 	health -= 1 
-	health_ui.value = health 
-	health_ui.show()
-	if health <= 0:
+	
+	if health <= 0: 
 		dead = true
 		queue_free()
-	return dead
+		return true
+		
+	return false
+		
+	#health_ui.value = health 
+	
+	
+	#health_ui.show()
+	#if health <= 0:
+		#dead = true
+		#queue_free()
+	#return dead
 
 
 
 
-func _on_detection_area_body_exited(_body): 
-	player = null 
-	player_chase = false
+#func _on_detection_area_body_exited(_body): 
+	#player = null 
+	#player_chase = false

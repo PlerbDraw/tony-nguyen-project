@@ -14,11 +14,10 @@ func _process(delta: float) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
-	
 
 
-func _on_enemy_hit(body: Node2D) -> void:
-	if not player == body:
-		player.increase_score(body.hit())
-		queue_free
-		
+
+func _on_enemy_hit(body: Node2D) -> void: 
+	if body.has_method("hit"): 
+		body.hit()
+		queue_free()

@@ -8,7 +8,7 @@ const SPEED: float = 300.0
 @export var spark_scene: PackedScene
 @export var health_ui: Node # Replace with function body.
 var can_shoot: bool = true 
-var health: int = 10
+var health: int = 5
 
 #The movement speed of the character, could be changed later.
 #const means that it won't change while the game is running. 
@@ -51,8 +51,9 @@ func _bullet_cooldown() -> void:
 func _receive_damage(body: Node2D) -> void:
 	if body is Enemy:
 		health -= 1
-		print(health)
-		health_ui.value = health
-		if health <= 0:
-			get_tree().reload_current_scene()
+		print("Health: ", health)
+	if health <= 0: 
+		print("game over")
+		get_tree().quit()
+			#get_tree().reload_current_scene()
 #this code helps godot to apply if enemy touches player, player takes damage.
