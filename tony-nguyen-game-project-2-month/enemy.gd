@@ -48,6 +48,9 @@ func hit():
 	health -= 1 
 	
 	if health <= 0: 
+		var wave_system = get_tree().get_first_node_in_group("wave_system")
+		if wave_system:
+			wave_system.update_enemy_ui()
 		dead = true
 		queue_free()
 		return true

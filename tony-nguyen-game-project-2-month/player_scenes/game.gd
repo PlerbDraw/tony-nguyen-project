@@ -40,18 +40,25 @@ func update_enemy_ui() -> void:
 
 func _new_wave() -> void:
 	current_wave += 1
+	#scale with difficulty every wave 
 	if current_wave % 3 == 0: 
 		enemy_health
 		enemy_speed
+	
 	if enemy_spawn_time > 1: 
 		enemy_spawn_time -= 0.3
+	
+	
 	enemies_spawned = 0
 	wave_enemy_count = last_enemy_count + new_enemy_count
 	last_enemy_count = new_enemy_count
 	new_enemy_count = wave_enemy_count
 	enemies_remaining = wave_enemy_count
+	
+	
 	wave_ui.text = "Wave: " + str(current_wave)
 	enemy_ui.text = "Enemies Remaining: " + str(wave_enemy_count)
+	
 	spawn_timer.start()
 	#this tells us that when the new wave starts, enemies stats are modified
 	#enemies gets faster, stronger and spawn more frequently.
@@ -62,11 +69,21 @@ func _new_wave() -> void:
 
 
 func _on_SpawnTimer_timeout():
-	var enemy_instances = enemy.instantiate() 
-	add_child(enemy_instances)
-	enemy_instances.position = $SpawnLocation.position 
-	
-	var nodes = get_tree().get_nodes_in_group("spawn")
-	var node = nodes[randi() % nodes.size()]
-	var position = node.position 
-	$SpawnLocation.position = position
+	if enemies_spawned < wave_enemy_count:
+		# Create enemy
+		var enemy_instance = enemy_scene.instantiate()
+		add_child(enemy_instance)
+
+		# Pick a random spawn node
+		var nodes = get_tree().get_nodes_in_group("spawn")
+		if nodes.size() > 0:
+			var node = nodes[randi() % nodes.size()]
+			var position = node.position
+			$SpawnLocation.position = position
+		# Spawn enemy at the updated spawn location
+		enemy_instance.position = $SpawnLocation.position
+
+		# Count this enemy
+		enemies_spawned += 1
+	else:
+		spawn_timer.stop()

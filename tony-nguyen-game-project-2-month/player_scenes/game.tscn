@@ -32,7 +32,7 @@ size = Vector2(63, 256)
 
 [sub_resource type="LabelSettings" id="LabelSettings_175ln"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("wave_ui", "spawn_timer", "enemy_ui")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("wave_ui", "spawn_timer", "enemy_ui") groups=["wave_system"]]
 script = ExtResource("1_1eb07")
 enemy_scene = ExtResource("2_rhvsi")
 wave_ui = NodePath("CanvasGroup/wave_ui")
@@ -107,13 +107,24 @@ position = Vector2(30, 354)
 
 [node name="CanvasGroup" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup"]
+offset_left = 65.0
+offset_top = 10.0
+offset_right = 242.0
+offset_bottom = 50.0
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
 [node name="score_label" type="Label" parent="CanvasGroup"]
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="wave_ui" type="Label" parent="CanvasGroup"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 93.0
+offset_top = 11.0
+offset_right = 133.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.94, 0, 0, 1)
+theme_override_font_sizes/font_size = 29
 
 [node name="enemies_ui" type="Label" parent="CanvasGroup"]
 offset_left = -56.0
