@@ -42,23 +42,24 @@ func _new_wave() -> void:
 	current_wave += 1
 	#scale with difficulty every wave 
 	if current_wave % 3 == 0: 
-		enemy_health
-		enemy_speed
-	
+		enemy_health + 1
+		enemy_speed + 1
+	#this increases enemy health per wave increase
 	if enemy_spawn_time > 1: 
 		enemy_spawn_time -= 0.3
-	
+	#this makes enemy spawn time more frequent
 	
 	enemies_spawned = 0
 	wave_enemy_count = last_enemy_count + new_enemy_count
 	last_enemy_count = new_enemy_count
 	new_enemy_count = wave_enemy_count
 	enemies_remaining = wave_enemy_count
+	#When the wave ended, more enemy spawns in the next wave
+	#Last enemy count and new enemy count adds together. 
 	
 	
 	wave_ui.text = "Wave: " + str(current_wave)
-	enemy_ui.text = "Enemies Remaining: " + str(wave_enemy_count)
-	
+	#this line creates text that tells the player what wave they're on.
 	spawn_timer.start()
 	#this tells us that when the new wave starts, enemies stats are modified
 	#enemies gets faster, stronger and spawn more frequently.
@@ -87,3 +88,4 @@ func _on_SpawnTimer_timeout():
 		enemies_spawned += 1
 	else:
 		spawn_timer.stop()
+#enemy stop spawning once maximum enemy count is reached, 
