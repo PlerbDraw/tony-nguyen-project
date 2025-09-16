@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://y4dfnv4sqvqe"]
+[gd_scene load_steps=15 format=4 uid="uid://y4dfnv4sqvqe"]
 
 [ext_resource type="Script" path="res://player_scenes/game.gd" id="1_1eb07"]
 [ext_resource type="Texture2D" uid="uid://bmo4711lj8e25" path="res://art/pixilart-drawing (2).png" id="1_wecq1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brq3jy1aktli2" path="res://enemy.tscn" id="2_rhvsi"]
 [ext_resource type="Texture2D" uid="uid://c6o1havk4u5fh" path="res://art/pixilart-drawing (3).png" id="3_x3vw1"]
 [ext_resource type="PackedScene" uid="uid://bqji04vdj37kj" path="res://SpawnLocation.tscn" id="4_e5vq1"]
+[ext_resource type="Script" path="res://player_scenes/gameover.gd" id="7_vknh3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shfa5"]
 texture = ExtResource("1_wecq1")
@@ -25,7 +26,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_0juqq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aync"]
-size = Vector2(545, 65)
+size = Vector2(542.5, 62.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x35b8"]
 size = Vector2(63, 256)
@@ -33,6 +34,7 @@ size = Vector2(63, 256)
 [sub_resource type="LabelSettings" id="LabelSettings_175ln"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("wave_ui", "spawn_timer", "enemy_ui") groups=["wave_system"]]
+position = Vector2(1, 0)
 script = ExtResource("1_1eb07")
 enemy_scene = ExtResource("2_rhvsi")
 wave_ui = NodePath("CanvasGroup/wave_ui")
@@ -64,7 +66,7 @@ position = Vector2(879.5, 32.5)
 shape = SubResource("RectangleShape2D_0aync")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMapLayer2/Area2D"]
-position = Vector2(880, 608)
+position = Vector2(879.75, 608.75)
 shape = SubResource("RectangleShape2D_0aync")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMapLayer2/Area2D"]
@@ -142,4 +144,46 @@ offset_bottom = 45.0
 value = 100.0
 fill_mode = 1
 
+[node name="Gameover" type="CanvasLayer" parent="."]
+script = ExtResource("7_vknh3")
+
+[node name="Label2" type="Label" parent="Gameover"]
+y_sort_enabled = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -41.5
+offset_right = 172.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+
+[node name="Panel" type="Panel" parent="Gameover/Label2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -183.0
+offset_right = 183.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="retry" type="Button" parent="Gameover"]
+offset_left = 445.0
+offset_top = 388.0
+offset_right = 533.0
+offset_bottom = 482.0
+text = "RETRY"
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="pressed" from="Gameover/retry" to="Gameover" method="_on_retry_pressed"]
