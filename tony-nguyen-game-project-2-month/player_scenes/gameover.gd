@@ -13,3 +13,8 @@ func game_over():
 	get_tree().paused = true
 	self.show()
 	
+
+
+func _on_quit_pressed() -> void:
+	get_tree().paused = false
+	get_tree().quit()

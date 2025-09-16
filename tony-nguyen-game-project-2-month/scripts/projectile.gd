@@ -1,8 +1,11 @@
 extends Area2D
 
+
 const BULLET = preload("res://bullet.tscn")
 
 @onready var muzzle: Marker2D = $Marker2D
+@onready var sfxshoot = $"../sfx_shoot"
+
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
@@ -18,22 +21,4 @@ func _physics_process(delta):
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.global_position = muzzle.global_position
 		bullet_instance.rotation = rotation
-
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	
-	#move_local_x(SPEED)
-
-#func _on_enemy_hit(body: Node2D) -> void:
-	#if not player == body:
-		#player.increase_score(body.hit())
-		#queue_free
-		
-		#body.hit()
-		#print(body.hit())
-		#player.increase_score()
-		#queue_free()
-	#print("HIT!")
+		sfxshoot.play()

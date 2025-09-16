@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxluaup7558td"]
+[gd_scene load_steps=7 format=3 uid="uid://bxluaup7558td"]
 
 [ext_resource type="Script" path="res://scripts/player_character.gd" id="1_576xq"]
 [ext_resource type="Texture2D" uid="uid://jv22xcmwapt6" path="res://art/pixilart-drawing (1).png" id="2_5jxav"]
 [ext_resource type="PackedScene" uid="uid://cbo4uqhjg1bg2" path="res://player_scenes/staff.tscn" id="2_oj2dx"]
+[ext_resource type="AudioStream" uid="uid://cvhj0upwbtc54" path="res://sound_effects/703887__lilmati__retro-bubble-shot-02.wav" id="4_gqjwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vswx4"]
 size = Vector2(47.9843, 62.8478)
@@ -35,5 +36,9 @@ position = Vector2(-3, 0)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_s3ecb")
+
+[node name="sfx_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gqjwd")
+volume_db = 6.72
 
 [connection signal="body_entered" from="Area2D" to="." method="_receive_damage"]

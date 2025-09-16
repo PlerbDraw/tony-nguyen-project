@@ -45,7 +45,7 @@ func _receive_damage(body: Node2D) -> void:
 		print("Health: ", health)
 	if health <= 0: 
 		print("game over")
-		get_node("$CharacterBody2D").queue_free()
+		self.queue_free()
 		get_node("../Gameover").game_over()
 			#get_tree().reload_current_scene()
 #this code helps godot to apply if enemy touches player, player takes damage.

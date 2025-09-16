@@ -145,6 +145,7 @@ value = 100.0
 fill_mode = 1
 
 [node name="Gameover" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("7_vknh3")
 
 [node name="Label2" type="Label" parent="Gameover"]
@@ -179,11 +180,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="retry" type="Button" parent="Gameover"]
-offset_left = 445.0
-offset_top = 388.0
-offset_right = 533.0
-offset_bottom = 482.0
+offset_left = 458.0
+offset_top = 386.0
+offset_right = 546.0
+offset_bottom = 480.0
 text = "RETRY"
+
+[node name="quit" type="Button" parent="Gameover"]
+offset_left = 601.0
+offset_top = 389.0
+offset_right = 690.0
+offset_bottom = 479.0
+theme_override_font_sizes/font_size = 14
+text = "QUIT"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="pressed" from="Gameover/retry" to="Gameover" method="_on_retry_pressed"]
+[connection signal="pressed" from="Gameover/quit" to="Gameover" method="_on_quit_pressed"]
