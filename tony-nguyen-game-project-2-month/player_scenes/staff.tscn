@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1cs7dwv6hdjg" path="res://art/pixilart-drawing (4).png" id="2_220f0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n3vkl"]
-radius = 14.0
+radius = 4.0
 height = 64.0
 
 [node name="staff" type="Area2D"]

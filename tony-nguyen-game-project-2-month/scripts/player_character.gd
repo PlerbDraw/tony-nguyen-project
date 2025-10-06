@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var animated_sprite = $AnimatedSprite2D
+
 @export var projectile_scene: PackedScene
 const SPEED: float = 300.0
 @export var bullet_scene: PackedScene
@@ -15,7 +17,16 @@ var health: int = 5
 #const means that it won't change while the game is running. 
 #it could be used liater for things like upgrades or speedbossts
 func _process(_delta: float) -> void:
+	
 	var v_direction: float = Input.get_axis("ui_up" , "ui_down")
+	if v_direction: 
+		animated_sprite.play("moving")
+		#animation for walking
+		
+	else: 
+		animated_sprite.play("idle")
+		
+		
 	var h_direction: float = Input.get_axis("ui_left" , "ui_right")
 	var direction: Vector2 = Vector2(h_direction, v_direction)
 	velocity = Vector2(SPEED * h_direction, SPEED * v_direction)
