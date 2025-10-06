@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dilypg516a4vq"]
+[gd_scene load_steps=3 format=3 uid="uid://dilypg516a4vq"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_xdpox"]
 
@@ -11,8 +11,6 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0.22, 0.22, 0.22, 0.6)
 shadow_size = 5
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qpju0"]
-
 [node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 8
@@ -24,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xdpox")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="start" type="Button" parent="VBoxContainer"]
+[node name="start" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -48,7 +46,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yqevx")
 action_mode = 0
 text = "Start Game"
 
-[node name="quit" type="Button" parent="VBoxContainer"]
+[node name="quit" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -57,7 +55,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yqevx")
 action_mode = 0
 text = "Quit"
 
-[node name="options" type="Button" parent="VBoxContainer"]
+[node name="options" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -66,14 +64,54 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yqevx")
 action_mode = 0
 text = "Options"
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_qpju0")
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -140.0
+offset_right = 158.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_right = 62.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.97, 0.97, 0.97, 1)
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -38.0
+offset_right = 97.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqevx")
+action_mode = 0
+text = "Back"
+
+[connection signal="pressed" from="MainButtons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainButtons/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
