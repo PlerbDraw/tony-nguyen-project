@@ -109,6 +109,7 @@ position = Vector2(31, 0)
 [node name="sfx_shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_gqjwd")
 volume_db = 6.72
+bus = &"Sfx"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

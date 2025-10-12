@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dilypg516a4vq"]
+[gd_scene load_steps=4 format=3 uid="uid://dilypg516a4vq"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_xdpox"]
+[ext_resource type="Script" path="res://audio_control.gd" id="2_iv0qw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqevx"]
 bg_color = Color(1, 1, 1, 1)
@@ -111,7 +112,20 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yqevx")
 action_mode = 0
 text = "Back"
 
+[node name="AudioControl" type="HSlider" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_top = 49.0
+offset_right = 125.0
+offset_bottom = 117.0
+grow_horizontal = 2
+script = ExtResource("2_iv0qw")
+
 [connection signal="pressed" from="MainButtons/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MainButtons/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
+[connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
